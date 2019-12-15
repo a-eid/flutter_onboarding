@@ -19,7 +19,19 @@ class PageList extends StatelessWidget {
         controller: controller,
         onPageChanged: onIndexChange,
         itemBuilder: (context, index) {
-          return Page(data[index]);
+          return AnimatedBuilder(
+            animation: controller,
+            builder: (context, child) {
+              var delta;
+              var y = 1.0;
+              if (controller.position.haveDimensions) {
+                delta = controller.page - index;
+                y = 1 - delta.abs().clamp(0.0, 1.0);
+              }
+
+              return Page(data[index], y);
+            },
+          );
         },
       ),
     );

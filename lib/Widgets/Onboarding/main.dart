@@ -15,7 +15,6 @@ class Onboarding extends StatefulWidget {
 
 class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   PageController controller;
-  Animation<double> scaleAnimation;
   AnimationController animationController;
   int current = 0;
   // bool lastPage = false;
@@ -51,7 +50,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       decoration: kContainerStyle,
       child: Stack(
         children: <Widget>[
-          PageList(onIndexChange: onIndexChange),
+          PageList(controller: controller, onIndexChange: onIndexChange),
           Positioned(
             bottom: 0,
             left: 8,
@@ -62,11 +61,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   PageIndicator(current: current, length: data.length),
-                  ProceedButton(
-                    show: current == data.length - 1,
-                    scaleAnimation: Tween(begin: 0.6, end: 1.0)
-                        .animate(animationController),
-                  ),
+                  ProceedButton(current == data.length - 1),
                 ],
               ),
             ),

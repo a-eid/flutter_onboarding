@@ -12,7 +12,7 @@ const kContainerStyle = BoxDecoration(
 
 BoxDecoration kIndicatorStyle(active) {
   return BoxDecoration(
-    color: active ? Colors.blue : Colors.red,
+    color: active ? Colors.white : Color(0xFF3E4750),
     boxShadow: [
       BoxShadow(
         color: Colors.black12,

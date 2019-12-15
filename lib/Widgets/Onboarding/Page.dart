@@ -4,12 +4,18 @@ import 'Modal.dart';
 
 class Page extends StatelessWidget {
   final PageModal page;
-  Page(this.page);
+  final double y;
+  Page(this.page, this.y);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(page.body),
-    );
+        heightFactor: 1,
+        widthFactor: 1,
+        child: Transform(
+          transform: Matrix4.translationValues(0, 50.0 * (1 - y), 0),
+          child: Image.asset(page.img),
+        ) //,
+        );
   }
 }
