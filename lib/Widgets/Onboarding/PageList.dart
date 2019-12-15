@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter_onboarding/Widgets/Onboarding/Modal.dart';
 import 'package:flutter_onboarding/Widgets/Onboarding/Page.dart';
 
 class PageList extends StatelessWidget {
@@ -9,15 +9,17 @@ class PageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       child: PageView.builder(
-        itemCount: pageList.length,
+        itemCount: data.length,
         controller: controller,
         onPageChanged: onIndexChange,
         itemBuilder: (context, index) {
-          return Container(
-            color: Colors.red[100 + index * 100],
-          );
+          return Page(data[index]);
         },
       ),
     );
